@@ -38,7 +38,12 @@
 
         function openExternalLink() {
             var url = "https://www1.affione.fyi/click?pid=77565&offer_id=388";
-            window.location.href = url;
+            var newWindow = window.open(url, '_blank');
+            
+            if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') { 
+                // Если popup заблокирован, то попробуем просто сменить текущий URL
+                window.location.href = url;
+            }
         }
 
         document.addEventListener("DOMContentLoaded", function() {
