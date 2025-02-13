@@ -32,10 +32,34 @@
         }
     </style>
     <script>
+        function getUserLanguage() {
+            return navigator.language || navigator.userLanguage;
+        }
+
         function openExternalLink() {
-            var url = "https://www1.affione.fyi/click?pid=77565&offer_id=388"; // Обновленная ссылка
+            var url = "https://www1.affione.fyi/click?pid=77565&offer_id=388";
             window.location.href = url;
         }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var userLang = getUserLanguage().substring(0, 2);
+            var title = document.querySelector("h1");
+            var text = document.querySelector("p");
+            var button = document.querySelector(".button");
+
+            var translations = {
+                "ru": { title: "Добро пожаловать!", text: "Нажмите кнопку ниже, чтобы продолжить.", button: "Перейти" },
+                "en": { title: "Welcome!", text: "Click the button below to continue.", button: "Continue" },
+                "es": { title: "¡Bienvenido!", text: "Haga clic en el botón de abajo para continuar.", button: "Continuar" },
+                "de": { title: "Willkommen!", text: "Klicken Sie auf die Schaltfläche unten, um fortzufahren.", button: "Weiter" }
+            };
+
+            if (translations[userLang]) {
+                title.textContent = translations[userLang].title;
+                text.textContent = translations[userLang].text;
+                button.textContent = translations[userLang].button;
+            }
+        });
     </script>
 </head>
 <body>
