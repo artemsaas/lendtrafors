@@ -37,7 +37,7 @@
         }
 
         function openExternalLink() {
-            var url = "https://www1.affione.fyi/click?pid=77565&offer_id=388";
+            var url = "https://offer.affimelody.com/n7uPlH";
             var newWindow = window.open(url, '_blank');
             
             if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') { 
